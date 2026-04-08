@@ -3,533 +3,388 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Engenharia On Demand — Documentação do Projeto</title>
-  <meta name="description" content="Documentação online do projeto de plataforma para conexão entre clientes e engenheiros." />
+  <title>Engenharia On Demand | Apresentação do Projeto</title>
+  <meta name="description" content="Apresentação premium do projeto de plataforma para conectar clientes e engenheiros de forma acessível, rápida e segura." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="bg-blur blur-1"></div>
-  <div class="bg-blur blur-2"></div>
-  <div class="page-shell">
-    <header class="hero fade-up">
-      <div class="hero-topbar glass">
-        <span class="pill">Projeto de negócio</span>
-        <button id="openIntroBtn" class="ghost-btn" type="button">Visão rápida</button>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-grid"></div>
+
+  <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir navegação">
+    <span></span><span></span><span></span>
+  </button>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <div class="brand-card glass hover-lift">
+        <div class="brand-badge">EOD</div>
+        <div>
+          <h1>Engenharia On Demand</h1>
+          <p>Apresentação do projeto</p>
+        </div>
       </div>
 
-      <div class="hero-content glass">
-        <div class="hero-copy">
-          <span class="eyebrow">Plataforma digital para engenharia civil</span>
-          <h1>Engenharia On Demand</h1>
-          <p>
-            Uma proposta para conectar clientes e engenheiros de forma rápida, acessível e segura,
-            com serviços padronizados, opção customizável e foco em pequenas reformas com respaldo técnico.
-          </p>
-          <div class="hero-actions">
-            <a href="#topicos" class="primary-btn">Ver documentação</a>
-            <button id="openPitchBtn" class="secondary-btn" type="button">Abrir pitch</button>
-          </div>
+      <nav class="side-nav">
+        <a href="#visao">Visão geral</a>
+        <a href="#problema">Problema e oportunidade</a>
+        <a href="#solucao">Solução</a>
+        <a href="#publico">Público-alvo</a>
+        <a href="#modelo">Modelo de negócio</a>
+        <a href="#legal">Aspectos legais</a>
+        <a href="#funcionalidades">Funcionalidades</a>
+        <a href="#mvp">MVP</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#riscos">Riscos e mitigação</a>
+        <a href="#colaborativo">Comentários colaborativos</a>
+      </nav>
+    </div>
+
+    <div class="sidebar-bottom glass">
+      <div class="mini-stat">
+        <span class="mini-label">Mensalidade sugerida</span>
+        <strong>R$ 14,99/mês</strong>
+      </div>
+      <div class="mini-stat">
+        <span class="mini-label">Modelo</span>
+        <strong>Uber + Dr. Consulta</strong>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content" id="mainContent">
+    <header class="hero fade-up" id="visao">
+      <div class="hero-content glass hover-lift">
+        <div class="hero-tag">Projeto digital · marketplace técnico · foco social</div>
+        <h2>Uma plataforma para conectar <span>clientes</span> e <span>engenheiros</span> com rapidez, preço claro e respaldo técnico.</h2>
+        <p>
+          A proposta une a lógica de descoberta e atendimento sob demanda, inspirada em apps como Uber e 99,
+          com a previsibilidade de serviços tabelados, como em modelos de saúde acessível. O foco é ampliar o acesso
+          à engenharia para reformas pequenas e médias, especialmente em moradias populares.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#modelo" class="btn btn-primary">Ver modelo de negócio</a>
+          <button class="btn btn-secondary" data-open-modal="pitchModal">Abrir pitch rápido</button>
         </div>
 
-        <aside class="hero-card floating">
-          <h2>Resumo executivo</h2>
-          <ul>
-            <li>Match entre cliente e engenheiro</li>
-            <li>Serviços com preço fixo + proposta customizada</li>
-            <li>Foco em reforma acessível e regularizada</li>
-            <li>Estrutura pensada para mobile e apresentação</li>
-          </ul>
-        </aside>
+        <div class="hero-metrics">
+          <article class="metric-card glass hover-lift">
+            <span>Problema</span>
+            <strong>Acesso difícil a engenheiros</strong>
+          </article>
+          <article class="metric-card glass hover-lift">
+            <span>Diferencial</span>
+            <strong>Serviços com preço definido + customizável</strong>
+          </article>
+          <article class="metric-card glass hover-lift">
+            <span>Receita</span>
+            <strong>Mensalidade + comissão + parcerias</strong>
+          </article>
+        </div>
       </div>
     </header>
 
-    <main id="topicos" class="content">
-      <section class="section-title fade-up delay-1">
-        <span class="pill">Apresentação estruturada</span>
-        <h2>Tópicos expansíveis</h2>
-        <p>Toque ou clique em cada bloco para expandir. O layout foi pensado para apresentação no celular e no desktop.</p>
-      </section>
+    <section class="section-grid">
+      <article class="feature-card glass fade-up hover-lift">
+        <h3>Foco social real</h3>
+        <p>Projetado para facilitar reformas acessíveis, sobretudo em imóveis populares e famílias com menor renda.</p>
+      </article>
+      <article class="feature-card glass fade-up hover-lift delay-1">
+        <h3>Validação técnica</h3>
+        <p>Ajuda a cumprir exigências de condomínios, incorporadoras e responsáveis por obras e reformas.</p>
+      </article>
+      <article class="feature-card glass fade-up hover-lift delay-2">
+        <h3>Escalável</h3>
+        <p>Começa com civil e pode evoluir para elétrica, hidráulica, perícia, vistoria e laudos.</p>
+      </article>
+    </section>
 
-      <section class="accordion-grid">
-        <details class="topic-card fade-up" open>
-          <summary>
-            <div>
-              <span class="topic-index">01</span>
-              <h3>Visão geral do projeto</h3>
-            </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="topic-body">
-            <p>
-              O projeto propõe uma plataforma digital que aproxima clientes que precisam de aval técnico para pequenas obras
-              e reformas de engenheiros habilitados, com contratação simplificada, preços mais transparentes e jornada parecida
-              com apps de mobilidade e clínicas populares.
-            </p>
-            <div class="mini-grid">
-              <article>
-                <h4>Problema</h4>
-                <p>Burocracia, dificuldade em encontrar profissionais, pouca clareza de preço e exigência técnica em reformas residenciais.</p>
-              </article>
-              <article>
-                <h4>Solução</h4>
-                <p>App com catálogo de serviços, agendamento, proposta customizada, pagamento intermediado e documentação digital.</p>
-              </article>
-            </div>
-          </div>
-        </details>
-
-        <details class="topic-card fade-up delay-1">
-          <summary>
-            <div>
-              <span class="topic-index">02</span>
-              <h3>Problema de mercado</h3>
-            </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="topic-body">
+    <section class="accordion-list">
+      <article class="accordion glass fade-up" id="problema">
+        <button class="accordion-toggle" aria-expanded="true">
+          <span>1. Problema e oportunidade</span>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content expanded">
+          <div class="accordion-inner">
+            <p>Muitas pessoas precisam de aval técnico para reformar, instalar pisos, alterar ambientes ou regularizar pequenas intervenções, mas encontram barreiras como preço, burocracia e dificuldade para localizar um profissional confiável.</p>
             <ul>
-              <li>Pessoas de renda menor precisam reformar e regularizar melhorias no imóvel.</li>
-              <li>Condomínios e construtoras muitas vezes exigem responsável técnico para autorizar a obra.</li>
-              <li>Muitos clientes não sabem qual serviço contratar nem quanto deveriam pagar.</li>
-              <li>Engenheiros autônomos também enfrentam dificuldade para captar demanda recorrente.</li>
+              <li>Falta de acesso rápido a profissionais habilitados.</li>
+              <li>Percepção de que contratar engenheiro é caro ou complexo.</li>
+              <li>Necessidade crescente de ART, laudos e acompanhamento técnico.</li>
+              <li>Oportunidade de conectar esse público a engenheiros autônomos e recém-formados.</li>
             </ul>
+            <button class="text-link" data-open-modal="oportunidadeModal">Ver oportunidade ampliada</button>
           </div>
-        </details>
+        </div>
+      </article>
 
-        <details class="topic-card fade-up delay-2">
-          <summary>
-            <div>
-              <span class="topic-index">03</span>
-              <h3>Proposta de valor</h3>
-            </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="topic-body">
-            <blockquote>
-              “Contrate um engenheiro com mais facilidade, preço claro e respaldo técnico para sua reforma.”
-            </blockquote>
-            <div class="chip-row">
-              <span class="chip">Rapidez</span>
-              <span class="chip">Acessibilidade</span>
-              <span class="chip">Regularização</span>
-              <span class="chip">Preço transparente</span>
-              <span class="chip">Segurança jurídica</span>
-            </div>
-          </div>
-        </details>
-
-        <details class="topic-card fade-up">
-          <summary>
-            <div>
-              <span class="topic-index">04</span>
-              <h3>Modelo do produto</h3>
-            </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="topic-body">
-            <div class="mini-grid">
-              <article>
-                <h4>Serviços tabelados</h4>
-                <p>O engenheiro define no cadastro uma lista de serviços com preço fixo, reduzindo atrito na contratação.</p>
-              </article>
-              <article>
-                <h4>Serviço customizável</h4>
-                <p>Cliente descreve a necessidade e negocia um valor com o profissional para casos fora do catálogo padrão.</p>
-              </article>
-              <article>
-                <h4>Jornada tipo app</h4>
-                <p>Busca, seleção, solicitação, aceite, pagamento, acompanhamento e avaliação.</p>
-              </article>
-              <article>
-                <h4>Foco social</h4>
-                <p>Facilitar reformas menores, principalmente em imóveis populares e situações de adequação técnica.</p>
-              </article>
-            </div>
-          </div>
-        </details>
-
-        <details class="topic-card fade-up delay-1">
-          <summary>
-            <div>
-              <span class="topic-index">05</span>
-              <h3>Público-alvo</h3>
-            </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="topic-body">
-            <div class="mini-grid three-cols">
-              <article>
-                <h4>Cliente principal</h4>
-                <p>Moradores, compradores de imóveis populares e pessoas que precisam reformar com exigência técnica.</p>
-              </article>
-              <article>
-                <h4>Clientes secundários</h4>
-                <p>Síndicos, pequenos comércios, imobiliárias e administradoras que precisam de suporte rápido.</p>
-              </article>
-              <article>
-                <h4>Profissionais</h4>
-                <p>Engenheiros civis autônomos, recém-formados ou profissionais em busca de renda complementar.</p>
-              </article>
-            </div>
-          </div>
-        </details>
-
-        <details class="topic-card fade-up delay-2">
-          <summary>
-            <div>
-              <span class="topic-index">06</span>
-              <h3>Possíveis serviços da plataforma</h3>
-            </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="topic-body">
-            <ul class="service-list">
-              <li>ART para reforma</li>
-              <li>Laudo técnico simples</li>
-              <li>Vistoria inicial</li>
-              <li>Acompanhamento de obra por visita</li>
-              <li>Validação de pequenas intervenções</li>
-              <li>Orçamento técnico orientativo</li>
-              <li>Consultoria online ou presencial</li>
-              <li>Serviço personalizado sob proposta</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="topic-card fade-up">
-          <summary>
-            <div>
-              <span class="topic-index">07</span>
-              <h3>Diferenciais e melhorias da ideia</h3>
-            </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="topic-body">
+      <article class="accordion glass fade-up" id="solucao">
+        <button class="accordion-toggle" aria-expanded="false">
+          <span>2. Solução proposta</span>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-inner">
+            <p>O app oferece duas formas de contratação:</p>
             <ul>
-              <li>Filtro por proximidade geográfica para reduzir custo e tempo.</li>
-              <li>Agenda com disponibilidade rápida.</li>
-              <li>Comparação simples de preço, prazo e avaliação.</li>
-              <li>Upload de fotos e documentos da reforma.</li>
-              <li>Integração futura com materiais de construção e crédito.</li>
-              <li>Camada educacional explicando quando um engenheiro é obrigatório.</li>
+              <li><strong>Serviços tabelados:</strong> com descrição, escopo e preço definido pelo profissional dentro de categorias permitidas.</li>
+              <li><strong>Serviço customizável:</strong> o cliente descreve a necessidade e negocia um valor com o engenheiro.</li>
             </ul>
+            <p>O mecanismo de descoberta prioriza localização, disponibilidade, reputação e especialidade cadastrada.</p>
           </div>
-        </details>
+        </div>
+      </article>
 
-        <details class="topic-card fade-up delay-1">
-          <summary>
+      <article class="accordion glass fade-up" id="publico">
+        <button class="accordion-toggle" aria-expanded="false">
+          <span>3. Público-alvo</span>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-inner two-col">
             <div>
-              <span class="topic-index">08</span>
-              <h3>Modelo de negócio</h3>
+              <h4>Cliente final</h4>
+              <ul>
+                <li>Moradores de imóveis populares</li>
+                <li>Compradores do Minha Casa Minha Vida</li>
+                <li>Pessoas em pequenas reformas</li>
+                <li>Proprietários que precisam de regularização</li>
+              </ul>
             </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="topic-body">
-            <div class="mini-grid">
-              <article>
-                <h4>Comissão por serviço</h4>
-                <p>Cobrança percentual por intermediação e liquidação do pagamento.</p>
-              </article>
-              <article>
-                <h4>Plano premium</h4>
-                <p>Destaque para engenheiros, prioridade em exibição e recursos extras de agenda e captação.</p>
-              </article>
-              <article>
-                <h4>Parcerias</h4>
-                <p>Convênios com lojas, condomínios, administradoras, fintechs e seguradoras.</p>
-              </article>
-              <article>
-                <h4>Receita futura</h4>
-                <p>Serviços complementares, assinatura B2B e integração com crédito e material.</p>
-              </article>
+            <div>
+              <h4>Profissionais</h4>
+              <ul>
+                <li>Engenheiros civis autônomos</li>
+                <li>Recém-formados buscando renda</li>
+                <li>Profissionais com agenda flexível</li>
+                <li>Especialistas em laudos, ART e vistorias</li>
+              </ul>
             </div>
           </div>
-        </details>
+        </div>
+      </article>
 
-        <details class="topic-card fade-up delay-2">
-          <summary>
-            <div>
-              <span class="topic-index">09</span>
-              <h3>Pontos obrigatórios e legais</h3>
-            </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="topic-body">
-            <div class="alert-box">
-              <strong>Este é um bloco crítico.</strong>
-              <p>
-                A operação precisa ser desenhada com apoio jurídico e validação regulatória antes do lançamento comercial.
-              </p>
+      <article class="accordion glass fade-up" id="modelo">
+        <button class="accordion-toggle" aria-expanded="false">
+          <span>4. Modelo de negócio</span>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-inner">
+            <div class="price-highlight">
+              <span>Plano do profissional</span>
+              <strong>R$ 14,99 por mês</strong>
+              <p>Mensalidade sugerida para que o profissional fique visível nas buscas, mantenha seu perfil ativo e possa aceitar novos trabalhos pela plataforma.</p>
             </div>
             <ul>
-              <li>Validação do registro profissional e situação no CREA.</li>
-              <li>Definição clara de quando há necessidade de ART e como ela será emitida.</li>
-              <li>Termos de uso, política de cancelamento e contrato digital entre as partes.</li>
-              <li>Política de privacidade e conformidade com LGPD.</li>
-              <li>Definição da responsabilidade da plataforma versus responsabilidade técnica do engenheiro.</li>
-              <li>Fluxo de mediação de conflito, reembolso e comprovação de execução.</li>
+              <li><strong>Mensalidade do profissional:</strong> modelo recorrente de baixa fricção.</li>
+              <li><strong>Comissão por serviço:</strong> percentual sobre serviços fechados dentro do app.</li>
+              <li><strong>Parcerias:</strong> lojas de material, financeiras, seguradoras e assistência técnica.</li>
+              <li><strong>Destaque patrocinado:</strong> espaço premium para profissionais com melhor reputação ou plano superior no futuro.</li>
             </ul>
-            <p class="note">
-              Observação: regras de programas públicos e exigências técnicas devem ser verificadas no momento da implantação comercial.
-            </p>
           </div>
-        </details>
+        </div>
+      </article>
 
-        <details class="topic-card fade-up">
-          <summary>
-            <div>
-              <span class="topic-index">10</span>
-              <h3>Fluxo do cliente</h3>
-            </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="topic-body">
-            <ol>
-              <li>Cliente se cadastra e informa localização.</li>
-              <li>Escolhe um serviço tabelado ou abre solicitação customizada.</li>
-              <li>Visualiza profissionais, preços, avaliações e prazo.</li>
-              <li>Envia a solicitação e realiza pagamento ou pré-autorização.</li>
-              <li>Acompanha atendimento e documentos pelo app.</li>
-              <li>Finaliza o serviço e avalia o profissional.</li>
-            </ol>
-          </div>
-        </details>
-
-        <details class="topic-card fade-up delay-1">
-          <summary>
-            <div>
-              <span class="topic-index">11</span>
-              <h3>Fluxo do engenheiro</h3>
-            </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="topic-body">
-            <ol>
-              <li>Cadastro com validação de identidade e registro profissional.</li>
-              <li>Configuração de serviços, preço, região atendida e agenda.</li>
-              <li>Recebimento de solicitações e aceite conforme disponibilidade.</li>
-              <li>Contato com cliente e emissão de documentação quando cabível.</li>
-              <li>Conclusão do atendimento e recebimento pela plataforma.</li>
-            </ol>
-          </div>
-        </details>
-
-        <details class="topic-card fade-up delay-2">
-          <summary>
-            <div>
-              <span class="topic-index">12</span>
-              <h3>Funcionalidades do MVP</h3>
-            </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="topic-body">
-            <div class="mini-grid three-cols">
-              <article>
-                <h4>Cliente</h4>
-                <p>Cadastro, busca, solicitação, chat básico, pagamento e avaliação.</p>
-              </article>
-              <article>
-                <h4>Engenheiro</h4>
-                <p>Cadastro validado, catálogo de serviços, agenda, aceite e histórico.</p>
-              </article>
-              <article>
-                <h4>Admin</h4>
-                <p>Aprovação de profissionais, gestão de disputas, monitoramento e painel financeiro.</p>
-              </article>
-            </div>
-          </div>
-        </details>
-
-        <details class="topic-card fade-up">
-          <summary>
-            <div>
-              <span class="topic-index">13</span>
-              <h3>Arquitetura sugerida</h3>
-            </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="topic-body">
-            <div class="stack-grid">
-              <article>
-                <h4>Frontend</h4>
-                <p>Site responsivo ou PWA com foco em mobile, animações leves e navegação simples.</p>
-              </article>
-              <article>
-                <h4>Backend</h4>
-                <p>Autenticação, banco de dados, armazenamento de documentos e notificações.</p>
-              </article>
-              <article>
-                <h4>Pagamentos</h4>
-                <p>Intermediação de cobrança, repasse e política de reembolso.</p>
-              </article>
-              <article>
-                <h4>Geolocalização</h4>
-                <p>Busca por região e cálculo de cobertura do profissional.</p>
-              </article>
-            </div>
-          </div>
-        </details>
-
-        <details class="topic-card fade-up delay-1">
-          <summary>
-            <div>
-              <span class="topic-index">14</span>
-              <h3>Viabilidade</h3>
-            </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="topic-body">
-            <div class="mini-grid">
-              <article>
-                <h4>Viabilidade de mercado</h4>
-                <p>Boa, porque atende dor real de acesso, regularização e conveniência.</p>
-              </article>
-              <article>
-                <h4>Viabilidade técnica</h4>
-                <p>Alta para MVP, desde que a primeira versão seja simples e focada no fluxo principal.</p>
-              </article>
-              <article>
-                <h4>Viabilidade operacional</h4>
-                <p>Média, pois depende de validação de profissionais, suporte e regras de responsabilidade.</p>
-              </article>
-              <article>
-                <h4>Viabilidade regulatória</h4>
-                <p>Possível, mas exige cuidado jurídico e desenho correto da operação.</p>
-              </article>
-            </div>
-          </div>
-        </details>
-
-        <details class="topic-card fade-up delay-2">
-          <summary>
-            <div>
-              <span class="topic-index">15</span>
-              <h3>Riscos e mitigação</h3>
-            </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="topic-body">
+      <article class="accordion glass fade-up" id="legal">
+        <button class="accordion-toggle" aria-expanded="false">
+          <span>5. Aspectos legais e obrigatórios</span>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-inner">
             <ul>
-              <li><strong>Risco jurídico:</strong> mitigar com advogado, termos robustos e processo de validação.</li>
-              <li><strong>Fuga da plataforma:</strong> mitigar com pagamento seguro, reputação e benefícios reais.</li>
-              <li><strong>Baixa adesão de engenheiros:</strong> mitigar com comissão justa e geração recorrente de demanda.</li>
-              <li><strong>Conflito entre cliente e profissional:</strong> mitigar com evidências, chat, histórico e central de suporte.</li>
+              <li>Validação do CREA do profissional antes de liberar o perfil.</li>
+              <li>Estrutura para emissão e vinculação de ART quando aplicável.</li>
+              <li>Termos claros de responsabilidade da plataforma e do profissional.</li>
+              <li>Contratos digitais e aceite das condições pelo cliente.</li>
+              <li>Conformidade com LGPD para dados pessoais e documentos.</li>
+              <li>Política de cancelamento, mediação e suporte em disputas.</li>
             </ul>
           </div>
-        </details>
+        </div>
+      </article>
 
-        <details class="topic-card fade-up">
-          <summary>
+      <article class="accordion glass fade-up" id="funcionalidades">
+        <button class="accordion-toggle" aria-expanded="false">
+          <span>6. Funcionalidades do sistema</span>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-inner three-col">
             <div>
-              <span class="topic-index">16</span>
-              <h3>Roadmap sugerido</h3>
+              <h4>Cliente</h4>
+              <ul>
+                <li>Busca por serviço e localização</li>
+                <li>Preço visível</li>
+                <li>Agendamento</li>
+                <li>Chat e anexos</li>
+                <li>Avaliação do profissional</li>
+              </ul>
             </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="topic-body timeline">
-            <article>
-              <h4>Fase 1 — Descoberta</h4>
-              <p>Validação com usuários, engenheiros e parceiros. Refinar escopo do MVP.</p>
-            </article>
-            <article>
-              <h4>Fase 2 — MVP</h4>
-              <p>Lançar versão básica com cadastro, catálogo, solicitação, aceite, pagamento e avaliação.</p>
-            </article>
-            <article>
-              <h4>Fase 3 — Operação piloto</h4>
-              <p>Rodar em uma cidade ou região com acompanhamento próximo do suporte.</p>
-            </article>
-            <article>
-              <h4>Fase 4 — Escala</h4>
-              <p>Expandir parceiros, cobertura geográfica, planos premium e integrações.</p>
-            </article>
+            <div>
+              <h4>Engenheiro</h4>
+              <ul>
+                <li>Cadastro de especialidades</li>
+                <li>Lista de serviços e preços</li>
+                <li>Ativação por mensalidade</li>
+                <li>Agenda e disponibilidade</li>
+                <li>Recebimento de propostas</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Administração</h4>
+              <ul>
+                <li>Moderação de perfis</li>
+                <li>Painel de pagamentos</li>
+                <li>Gestão de conflitos</li>
+                <li>Auditoria de documentos</li>
+                <li>Indicadores de uso</li>
+              </ul>
+            </div>
           </div>
-        </details>
+        </div>
+      </article>
 
-        <details class="topic-card fade-up delay-1">
-          <summary>
-            <div>
-              <span class="topic-index">17</span>
-              <h3>Ideias futuras</h3>
-            </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="topic-body">
+      <article class="accordion glass fade-up" id="mvp">
+        <button class="accordion-toggle" aria-expanded="false">
+          <span>7. MVP realista</span>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-inner">
+            <p>Para validar a ideia sem excesso de complexidade, a primeira versão deve focar no que prova valor rapidamente.</p>
             <ul>
-              <li>Simulador básico de custo de reforma.</li>
-              <li>Recomendação automática de serviço com base em fotos.</li>
-              <li>Parcerias com materiais de construção e financiamento.</li>
-              <li>Seguro, garantia estendida e planos de manutenção residencial.</li>
-              <li>Expansão para arquitetura, elétrica, hidráulica e laudos especializados.</li>
+              <li>Cadastro de cliente e profissional</li>
+              <li>Validação inicial do perfil do engenheiro</li>
+              <li>Catálogo de serviços predefinidos</li>
+              <li>Pedido de serviço customizável</li>
+              <li>Chat básico</li>
+              <li>Fluxo de contratação e pagamento</li>
+              <li>Área de comentários para equipe discutir o projeto</li>
             </ul>
           </div>
-        </details>
+        </div>
+      </article>
 
-        <details class="topic-card fade-up delay-2">
-          <summary>
-            <div>
-              <span class="topic-index">18</span>
-              <h3>Pitch final</h3>
-            </div>
-            <span class="summary-icon">+</span>
-          </summary>
-          <div class="topic-body">
-            <p class="pitch-text">
-              Estamos propondo uma plataforma que democratiza o acesso à engenharia civil, conectando pessoas que precisam
-              reformar ou regularizar melhorias em seus imóveis a engenheiros habilitados, com contratação mais simples,
-              preço transparente e respaldo técnico. A ideia une conveniência digital, impacto social e potencial de escala.
-            </p>
-            <button id="openPitchModalBottom" class="primary-btn small" type="button">Abrir pitch em modal</button>
+      <article class="accordion glass fade-up" id="roadmap">
+        <button class="accordion-toggle" aria-expanded="false">
+          <span>8. Roadmap</span>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-inner timeline">
+            <div class="timeline-item"><strong>Fase 1</strong><span>Validação da proposta, regras jurídicas, entrevistas com usuários e profissionais.</span></div>
+            <div class="timeline-item"><strong>Fase 2</strong><span>MVP com serviços tabelados, customizável e mensalidade do profissional.</span></div>
+            <div class="timeline-item"><strong>Fase 3</strong><span>Painel administrativo, reputação, destaque de profissionais e parcerias.</span></div>
+            <div class="timeline-item"><strong>Fase 4</strong><span>Expansão geográfica, novos tipos de serviço e financiamento integrado.</span></div>
           </div>
-        </details>
-      </section>
-    </main>
+        </div>
+      </article>
 
-    <footer class="footer glass fade-up">
-      <div>
-        <strong>Projeto online para apresentação</strong>
-        <p>Estrutura pronta para hospedar em GitHub Pages, Netlify ou Vercel.</p>
+      <article class="accordion glass fade-up" id="riscos">
+        <button class="accordion-toggle" aria-expanded="false">
+          <span>9. Riscos e mitigação</span>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-inner">
+            <ul>
+              <li><strong>Risco jurídico:</strong> reduzir com compliance, contratos e validação profissional.</li>
+              <li><strong>Baixa adesão:</strong> reduzir com onboarding simples e mensalidade acessível.</li>
+              <li><strong>Fechamento por fora:</strong> reduzir com garantia de pagamento e benefícios internos.</li>
+              <li><strong>Desconfiança do cliente:</strong> reduzir com avaliações, documentos e suporte.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="comments-section glass fade-up" id="colaborativo">
+      <div class="comments-header">
+        <div>
+          <span class="section-kicker">Modo colaborativo</span>
+          <h3>Espaço de comentários da equipe</h3>
+          <p>Visual inspirado em ferramentas modernas, com suporte a escrita simples estilo markdown, nome personalizado e cor de exibição.</p>
+        </div>
+        <button class="btn btn-secondary" data-open-modal="markdownModal">Ajuda de formatação</button>
       </div>
-      <button id="backToTop" class="ghost-btn" type="button">Voltar ao topo</button>
-    </footer>
+
+      <div class="collab-note">
+        <strong>Importante:</strong> esta versão já está preparada para comentários online com Supabase. Basta preencher o arquivo <code>config.js</code> e rodar o SQL fornecido.
+      </div>
+
+      <form id="commentForm" class="comment-form">
+        <div class="form-row two-col">
+          <label>
+            <span>Seu nome</span>
+            <input type="text" id="authorName" placeholder="Ex.: Ricardo" maxlength="40" required />
+          </label>
+          <label>
+            <span>Cor do nome</span>
+            <input type="color" id="authorColor" value="#8b5cf6" />
+          </label>
+        </div>
+
+        <label>
+          <span>Comentário</span>
+          <textarea id="commentText" placeholder="Use **negrito**, *itálico*, listas com - item e `código`..." rows="7" required></textarea>
+        </label>
+
+        <div class="editor-actions">
+          <button type="button" class="btn btn-ghost" id="previewBtn">Alternar preview</button>
+          <button type="submit" class="btn btn-primary">Publicar comentário</button>
+        </div>
+
+        <div id="previewBox" class="preview-box hidden"></div>
+      </form>
+
+      <div class="comments-toolbar">
+        <div class="search-box">
+          <input type="text" id="commentSearch" placeholder="Buscar por nome ou conteúdo..." />
+        </div>
+        <button class="btn btn-ghost" id="refreshCommentsBtn">Atualizar</button>
+      </div>
+
+      <div id="commentsStatus" class="comments-status">Conectando comentários...</div>
+      <div id="commentsList" class="comments-list"></div>
+    </section>
+  </main>
+
+  <div class="modal-backdrop hidden" id="modalBackdrop"></div>
+
+  <div class="modal hidden" id="pitchModal" role="dialog" aria-modal="true" aria-labelledby="pitchTitle">
+    <button class="modal-close" data-close-modal>&times;</button>
+    <h3 id="pitchTitle">Pitch rápido</h3>
+    <p>Uma plataforma digital para democratizar o acesso a engenheiros, com contratação rápida, preços claros, mensalidade acessível para profissionais e foco em reformas de menor porte com respaldo técnico.</p>
   </div>
 
-  <div id="overlay" class="overlay hidden"></div>
-
-  <div id="introModal" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="introTitle">
-    <div class="modal-card glass modal-animate">
-      <button class="close-btn" data-close="introModal" type="button" aria-label="Fechar modal">×</button>
-      <span class="pill">Resumo</span>
-      <h2 id="introTitle">Visão rápida do projeto</h2>
-      <p>
-        A proposta mistura conveniência digital, preço mais acessível e necessidade técnica real do mercado,
-        com grande potencial para validação regional antes de expansão.
-      </p>
-      <ul>
-        <li>Resolve uma dor concreta de clientes e engenheiros.</li>
-        <li>Pode começar com MVP enxuto.</li>
-        <li>Tem apelo social e comercial.</li>
-        <li>Exige estrutura jurídica desde cedo.</li>
-      </ul>
-    </div>
+  <div class="modal hidden" id="oportunidadeModal" role="dialog" aria-modal="true" aria-labelledby="oportunidadeTitle">
+    <button class="modal-close" data-close-modal>&times;</button>
+    <h3 id="oportunidadeTitle">Oportunidade ampliada</h3>
+    <p>O projeto tem potencial social, comercial e regulatório. Ele atende famílias que precisam reformar com segurança, abre uma nova fonte de renda para engenheiros e ainda pode se conectar a parceiros financeiros, lojas e programas habitacionais.</p>
   </div>
 
-  <div id="pitchModal" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="pitchTitle">
-    <div class="modal-card glass modal-animate">
-      <button class="close-btn" data-close="pitchModal" type="button" aria-label="Fechar modal">×</button>
-      <span class="pill">Pitch</span>
-      <h2 id="pitchTitle">Apresentação curta</h2>
-      <p class="pitch-text">
-        Nosso projeto cria uma ponte entre pessoas que precisam reformar com regularização e engenheiros habilitados,
-        tornando a contratação técnica mais simples, acessível e confiável. É uma proposta com potencial social,
-        aderência a dores reais do mercado e espaço para escalar como plataforma.
-      </p>
-    </div>
+  <div class="modal hidden" id="markdownModal" role="dialog" aria-modal="true" aria-labelledby="markdownTitle">
+    <button class="modal-close" data-close-modal>&times;</button>
+    <h3 id="markdownTitle">Formatação disponível</h3>
+    <ul class="help-list">
+      <li><code>**texto**</code> para negrito</li>
+      <li><code>*texto*</code> para itálico</li>
+      <li><code>`texto`</code> para destaque de código</li>
+      <li><code>- item</code> para listas</li>
+      <li>Quebras de linha são preservadas</li>
+    </ul>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
