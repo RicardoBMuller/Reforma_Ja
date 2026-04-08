@@ -1,21 +1,24 @@
-ARQUIVOS DO SITE
+SITE DE APRESENTAÇÃO - ENGENHARIA ON DEMAND
 
-1. Publique no GitHub Pages / Netlify / Vercel:
-- index.html
-- styles.css
-- script.js
-- config.js
+VERSÃO COLABORATIVA SIMPLES
 
-2. Para ativar os comentários online:
-- Crie um projeto no Supabase
-- Rode o arquivo supabase_project_comments.sql no SQL Editor
-- Abra config.js e preencha:
-  SUPABASE_URL
-  SUPABASE_ANON_KEY
+Agora os comentários ficaram mais simples:
+- sem login
+- dentro de cada tópico
+- cada pessoa informa apenas:
+  1) nome
+  2) cor do nome
+  3) comentário
 
-3. Observação importante:
-- O site é estático e a colaboração online acontece via Supabase.
-- Sem preencher o config.js, a área colaborativa aparece, mas não publica comentários.
+IMPORTANTE
+Para os comentários aparecerem ONLINE para todos:
+1. crie um projeto no Supabase
+2. rode o arquivo supabase_project_comments.sql no SQL Editor
+3. preencha o config.js com:
+   - SUPABASE_URL
+   - SUPABASE_ANON_KEY
 
-4. Sugestão:
-- Você pode renomear o projeto visualmente no index.html sem alterar a estrutura.
+Depois publique normalmente no GitHub Pages.
+
+OBSERVAÇÃO
+Sem Supabase preenchido, o site abre normalmente, mas os comentários online não funcionam.

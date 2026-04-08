@@ -1,16 +1,10 @@
+
 const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
 const $ = (selector, parent = document) => parent.querySelector(selector);
 
 const sidebar = $('#sidebar');
 const mobileMenuBtn = $('#mobileMenuBtn');
 const modalBackdrop = $('#modalBackdrop');
-const commentForm = $('#commentForm');
-const previewBtn = $('#previewBtn');
-const previewBox = $('#previewBox');
-const commentsList = $('#commentsList');
-const commentsStatus = $('#commentsStatus');
-const commentSearch = $('#commentSearch');
-const refreshCommentsBtn = $('#refreshCommentsBtn');
 
 let supabaseClient = null;
 let allComments = [];
@@ -52,7 +46,7 @@ function openAccordion(acc, content, btn, animate = true) {
   btn.setAttribute('aria-expanded', 'true');
   content.classList.add('expanded');
   if (!animate) content.style.transition = 'none';
-  content.style.maxHeight = `${content.scrollHeight + 6}px`;
+  content.style.maxHeight = `${content.scrollHeight + 20}px`;
   if (!animate) requestAnimationFrame(() => { content.style.transition = ''; });
 }
 
@@ -61,6 +55,17 @@ function closeAccordion(acc, content, btn) {
   btn.setAttribute('aria-expanded', 'false');
   content.style.maxHeight = '0px';
   content.classList.remove('expanded');
+}
+
+function refreshOpenAccordionHeight(container) {
+  const accordion = container.closest('.accordion');
+  if (!accordion || !accordion.classList.contains('open')) return;
+  const content = $('.accordion-content', accordion);
+  if (content) {
+    requestAnimationFrame(() => {
+      content.style.maxHeight = `${content.scrollHeight + 20}px`;
+    });
+  }
 }
 
 function initModals() {
@@ -104,67 +109,28 @@ function escapeHtml(text = '') {
     .replace(/'/g, '&#039;');
 }
 
-function markdownToHtml(raw = '') {
-  let text = escapeHtml(raw.trim());
-
-  text = text.replace(/`([^`]+)`/g, '<code>$1</code>');
-  text = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-  text = text.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-
-  const lines = text.split('\n');
-  let inList = false;
-  const processed = lines.map(line => {
-    if (/^\s*-\s+/.test(line)) {
-      const item = line.replace(/^\s*-\s+/, '');
-      if (!inList) {
-        inList = true;
-        return `<ul><li>${item}</li>`;
-      }
-      return `<li>${item}</li>`;
-    }
-    if (inList) {
-      inList = false;
-      return `</ul><p>${line || ''}</p>`;
-    }
-    return `<p>${line || ''}</p>`;
-  }).join('');
-
-  return inList ? `${processed}</ul>` : processed;
+function setTopicStatus(topicId, message, isError = false) {
+  const status = document.querySelector(`.topic-comments-status[data-topic-id="${topicId}"]`);
+  if (!status) return;
+  status.textContent = message;
+  status.style.color = isError ? '#fda4af' : '';
 }
 
-function updatePreview() {
-  const text = $('#commentText').value;
-  previewBox.innerHTML = markdownToHtml(text) || '<p>Escreva algo para visualizar o preview.</p>';
-}
+function renderTopicComments(topicId) {
+  const list = document.querySelector(`.topic-comments-list[data-topic-id="${topicId}"]`);
+  if (!list) return;
 
-function initPreview() {
-  previewBtn?.addEventListener('click', () => {
-    previewBox.classList.toggle('hidden');
-    updatePreview();
-  });
-  $('#commentText')?.addEventListener('input', () => {
-    if (!previewBox.classList.contains('hidden')) updatePreview();
-  });
-}
+  const items = allComments
+    .filter(item => item.topic_id === topicId)
+    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
-function setStatus(message, isError = false) {
-  commentsStatus.textContent = message;
-  commentsStatus.style.color = isError ? '#fda4af' : '';
-}
-
-function renderComments(items) {
-  const q = (commentSearch.value || '').toLowerCase().trim();
-  const filtered = items.filter(item => {
-    const hay = `${item.author_name || ''} ${item.comment_text || ''}`.toLowerCase();
-    return !q || hay.includes(q);
-  });
-
-  if (!filtered.length) {
-    commentsList.innerHTML = '<div class="empty-state">Nenhum comentário encontrado ainda.</div>';
+  if (!items.length) {
+    list.innerHTML = '<div class="empty-state">Ainda não há comentários neste tópico.</div>';
+    refreshOpenAccordionHeight(list);
     return;
   }
 
-  commentsList.innerHTML = filtered.map(item => {
+  list.innerHTML = items.map(item => {
     const color = item.author_color || '#8b5cf6';
     const created = new Date(item.created_at).toLocaleString('pt-BR');
     return `
@@ -176,21 +142,70 @@ function renderComments(items) {
           </div>
           <div class="comment-time">${created}</div>
         </div>
-        <div class="comment-body">${markdownToHtml(item.comment_text || '')}</div>
+        <div class="comment-body">${escapeHtml(item.comment_text || '')}</div>
       </article>
     `;
   }).join('');
+
+  refreshOpenAccordionHeight(list);
+}
+
+function renderAllTopics() {
+  $$('.topic-comments-list').forEach(list => renderTopicComments(list.dataset.topicId));
+}
+
+function buildTopicComments() {
+  $$('.accordion').forEach((accordion, index) => {
+    const inner = $('.accordion-inner', accordion);
+    if (!inner) return;
+
+    const topicId = accordion.id || `topico-${index + 1}`;
+    const block = document.createElement('div');
+    block.className = 'topic-comments';
+    block.innerHTML = `
+      <h5>Comentários deste tópico</h5>
+      <p>Espaço rápido para observações da equipe durante a apresentação.</p>
+      <form class="topic-comments-form" data-topic-id="${topicId}">
+        <div class="topic-comments-grid">
+          <label>
+            <span>Nome</span>
+            <input type="text" name="author_name" maxlength="40" placeholder="Ex.: Ricardo" required>
+          </label>
+          <label>
+            <span>Cor do nome</span>
+            <input type="color" name="author_color" value="#8b5cf6">
+          </label>
+        </div>
+        <label>
+          <span>Comentário</span>
+          <textarea name="comment_text" placeholder="Escreva aqui a observação deste tópico..." required></textarea>
+        </label>
+        <div class="topic-comments-actions">
+          <button type="submit" class="btn btn-primary">Publicar comentário</button>
+          <button type="button" class="btn btn-ghost topic-refresh-btn" data-topic-id="${topicId}">Atualizar</button>
+          <span class="topic-comments-status" data-topic-id="${topicId}">Comentários prontos.</span>
+        </div>
+      </form>
+      <div class="topic-comments-list" data-topic-id="${topicId}"></div>
+    `;
+    inner.appendChild(block);
+  });
 }
 
 async function initSupabase() {
   const cfg = window.APP_CONFIG || {};
   const url = cfg.SUPABASE_URL;
   const key = cfg.SUPABASE_ANON_KEY;
-
   const placeholders = ['COLE_SUA_SUPABASE_URL_AQUI', 'COLE_SUA_SUPABASE_ANON_KEY_AQUI'];
+
   if (!url || !key || placeholders.includes(url) || placeholders.includes(key)) {
-    setStatus('Preencha o config.js com sua URL e chave anônima do Supabase para ativar os comentários online.', true);
-    commentsList.innerHTML = '<div class="empty-state">Comentários online aguardando configuração do Supabase.</div>';
+    $$('.topic-comments-status').forEach(el => {
+      el.textContent = 'Preencha o config.js e rode o SQL para ativar os comentários online.';
+      el.style.color = '#fda4af';
+    });
+    $$('.topic-comments-list').forEach(el => {
+      el.innerHTML = '<div class="empty-state">Comentários online aguardando configuração do Supabase.</div>';
+    });
     return;
   }
 
@@ -199,71 +214,88 @@ async function initSupabase() {
     await fetchComments();
 
     supabaseClient
-      .channel('public:project_comments')
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'project_comments' }, () => fetchComments())
+      .channel('public:project_topic_comments')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'project_topic_comments' }, () => fetchComments())
       .subscribe();
   } catch (error) {
     console.error(error);
-    setStatus('Não foi possível conectar ao Supabase.', true);
+    $$('.topic-comments-status').forEach(el => {
+      el.textContent = 'Não foi possível conectar ao Supabase.';
+      el.style.color = '#fda4af';
+    });
   }
 }
 
 async function fetchComments() {
   if (!supabaseClient) return;
-  setStatus('Carregando comentários...');
+
+  $$('.topic-comments-status').forEach(el => {
+    el.textContent = 'Carregando comentários...';
+    el.style.color = '';
+  });
+
   const { data, error } = await supabaseClient
-    .from('project_comments')
+    .from('project_topic_comments')
     .select('*')
     .order('created_at', { ascending: false });
 
   if (error) {
     console.error(error);
-    setStatus('Erro ao carregar comentários. Verifique o SQL e as permissões.', true);
+    $$('.topic-comments-status').forEach(el => {
+      el.textContent = 'Erro ao carregar comentários. Verifique o SQL e as permissões.';
+      el.style.color = '#fda4af';
+    });
     return;
   }
 
   allComments = data || [];
-  renderComments(allComments);
-  setStatus(`${allComments.length} comentário(s) carregado(s).`);
+  renderAllTopics();
+
+  $$('.topic-comments-status').forEach(el => {
+    const topicId = el.dataset.topicId;
+    const total = allComments.filter(item => item.topic_id === topicId).length;
+    el.textContent = `${total} comentário(s) neste tópico.`;
+    el.style.color = '';
+  });
 }
 
-async function submitComment(event) {
+async function submitTopicComment(event) {
   event.preventDefault();
-  if (!supabaseClient) {
-    setStatus('Configure o Supabase antes de publicar comentários.', true);
-    return;
-  }
+  if (!supabaseClient) return;
 
+  const form = event.currentTarget;
+  const topicId = form.dataset.topicId;
+  const formData = new FormData(form);
   const payload = {
-    author_name: $('#authorName').value.trim(),
-    author_color: $('#authorColor').value,
-    comment_text: $('#commentText').value.trim()
+    topic_id: topicId,
+    author_name: (formData.get('author_name') || '').toString().trim(),
+    author_color: (formData.get('author_color') || '#8b5cf6').toString(),
+    comment_text: (formData.get('comment_text') || '').toString().trim()
   };
 
   if (!payload.author_name || !payload.comment_text) {
-    setStatus('Preencha nome e comentário.', true);
+    setTopicStatus(topicId, 'Preencha nome e comentário.', true);
     return;
   }
 
-  setStatus('Publicando comentário...');
-  const { error } = await supabaseClient.from('project_comments').insert(payload);
+  setTopicStatus(topicId, 'Publicando comentário...');
+  const { error } = await supabaseClient.from('project_topic_comments').insert(payload);
+
   if (error) {
     console.error(error);
-    setStatus('Erro ao publicar comentário.', true);
+    setTopicStatus(topicId, 'Erro ao publicar comentário.', true);
     return;
   }
 
-  commentForm.reset();
-  $('#authorColor').value = '#8b5cf6';
-  previewBox.classList.add('hidden');
+  form.reset();
+  form.querySelector('input[name="author_color"]').value = '#8b5cf6';
   await fetchComments();
-  setStatus('Comentário publicado com sucesso.');
+  setTopicStatus(topicId, 'Comentário publicado com sucesso.');
 }
 
-function initCommentEvents() {
-  commentForm?.addEventListener('submit', submitComment);
-  commentSearch?.addEventListener('input', () => renderComments(allComments));
-  refreshCommentsBtn?.addEventListener('click', fetchComments);
+function initTopicCommentEvents() {
+  $$('.topic-comments-form').forEach(form => form.addEventListener('submit', submitTopicComment));
+  $$('.topic-refresh-btn').forEach(btn => btn.addEventListener('click', fetchComments));
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -271,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAccordions();
   initModals();
   initReveal();
-  initPreview();
-  initCommentEvents();
+  buildTopicComments();
+  initTopicCommentEvents();
   initSupabase();
 });

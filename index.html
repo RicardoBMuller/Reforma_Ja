@@ -40,7 +40,7 @@
         <a href="#mvp">MVP</a>
         <a href="#roadmap">Roadmap</a>
         <a href="#riscos">Riscos e mitigação</a>
-        <a href="#colaborativo">Comentários colaborativos</a>
+        <a href="#colaborativo">Comentários por tópico</a>
       </nav>
     </div>
 
@@ -309,51 +309,22 @@
     <section class="comments-section glass fade-up" id="colaborativo">
       <div class="comments-header">
         <div>
-          <span class="section-kicker">Modo colaborativo</span>
-          <h3>Espaço de comentários da equipe</h3>
-          <p>Visual inspirado em ferramentas modernas, com suporte a escrita simples estilo markdown, nome personalizado e cor de exibição.</p>
+          <span class="section-kicker">Modo colaborativo simples</span>
+          <h3>Comentários dentro de cada tópico</h3>
+          <p>Cada seção da apresentação pode receber comentários rápidos, sem login. Basta escrever o nome, escolher a cor do nome e publicar a observação diretamente no tópico desejado.</p>
         </div>
-        <button class="btn btn-secondary" data-open-modal="markdownModal">Ajuda de formatação</button>
       </div>
 
       <div class="collab-note">
-        <strong>Importante:</strong> esta versão já está preparada para comentários online com Supabase. Basta preencher o arquivo <code>config.js</code> e rodar o SQL fornecido.
+        <strong>Como funciona:</strong> abra qualquer tópico, vá até a área <code>Comentários deste tópico</code> e publique. Para os comentários ficarem online para todo mundo, basta preencher o <code>config.js</code> com seu Supabase e rodar o SQL fornecido.
       </div>
 
-      <form id="commentForm" class="comment-form">
-        <div class="form-row two-col">
-          <label>
-            <span>Seu nome</span>
-            <input type="text" id="authorName" placeholder="Ex.: Ricardo" maxlength="40" required />
-          </label>
-          <label>
-            <span>Cor do nome</span>
-            <input type="color" id="authorColor" value="#8b5cf6" />
-          </label>
-        </div>
-
-        <label>
-          <span>Comentário</span>
-          <textarea id="commentText" placeholder="Use **negrito**, *itálico*, listas com - item e `código`..." rows="7" required></textarea>
-        </label>
-
-        <div class="editor-actions">
-          <button type="button" class="btn btn-ghost" id="previewBtn">Alternar preview</button>
-          <button type="submit" class="btn btn-primary">Publicar comentário</button>
-        </div>
-
-        <div id="previewBox" class="preview-box hidden"></div>
-      </form>
-
-      <div class="comments-toolbar">
-        <div class="search-box">
-          <input type="text" id="commentSearch" placeholder="Buscar por nome ou conteúdo..." />
-        </div>
-        <button class="btn btn-ghost" id="refreshCommentsBtn">Atualizar</button>
+      <div class="topic-list">
+        <div class="topic-chip">Sem login</div>
+        <div class="topic-chip">Nome + cor</div>
+        <div class="topic-chip">Comentário por tópico</div>
+        <div class="topic-chip">Visual mobile friendly</div>
       </div>
-
-      <div id="commentsStatus" class="comments-status">Conectando comentários...</div>
-      <div id="commentsList" class="comments-list"></div>
     </section>
   </main>
 
@@ -371,17 +342,7 @@
     <p>O projeto tem potencial social, comercial e regulatório. Ele atende famílias que precisam reformar com segurança, abre uma nova fonte de renda para engenheiros e ainda pode se conectar a parceiros financeiros, lojas e programas habitacionais.</p>
   </div>
 
-  <div class="modal hidden" id="markdownModal" role="dialog" aria-modal="true" aria-labelledby="markdownTitle">
-    <button class="modal-close" data-close-modal>&times;</button>
-    <h3 id="markdownTitle">Formatação disponível</h3>
-    <ul class="help-list">
-      <li><code>**texto**</code> para negrito</li>
-      <li><code>*texto*</code> para itálico</li>
-      <li><code>`texto`</code> para destaque de código</li>
-      <li><code>- item</code> para listas</li>
-      <li>Quebras de linha são preservadas</li>
-    </ul>
-  </div>
+  
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="config.js"></script>
