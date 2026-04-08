@@ -1,24 +1,26 @@
-SITE DE APRESENTAÇÃO - ENGENHARIA ON DEMAND
+ENGENHARIA ON DEMAND - SITE ROADMAP
 
-VERSÃO COLABORATIVA SIMPLES
+Arquivos do site:
+- index.html
+- styles.css
+- script.js
 
-Agora os comentários ficaram mais simples:
+O que esta versão traz:
+- visual mais claro, suave e pastel
+- cara de roadmap / jira / board
+- sidebar lateral
+- navegação por âncoras
+- hover, mouse over, fade in, fade out e modal
+- tópicos expansíveis
+- comentários simples dentro de cada tópico
 - sem login
-- dentro de cada tópico
-- cada pessoa informa apenas:
-  1) nome
-  2) cor do nome
-  3) comentário
+- comentários salvos localmente no navegador do aparelho
 
-IMPORTANTE
-Para os comentários aparecerem ONLINE para todos:
-1. crie um projeto no Supabase
-2. rode o arquivo supabase_project_comments.sql no SQL Editor
-3. preencha o config.js com:
-   - SUPABASE_URL
-   - SUPABASE_ANON_KEY
+Como publicar:
+1. envie os arquivos para o seu repositório
+2. ative o GitHub Pages
+3. abra o link publicado
 
-Depois publique normalmente no GitHub Pages.
-
-OBSERVAÇÃO
-Sem Supabase preenchido, o site abre normalmente, mas os comentários online não funcionam.
+Observação importante:
+- os comentários ficam salvos no navegador/dispositivo em que forem feitos
+- esta versão foi pensada para apresentação leve e rápida para seus amigos
